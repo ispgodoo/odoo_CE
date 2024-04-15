@@ -15,7 +15,7 @@ jobs:
           branch: 17.0 # Replace 17.0 with the branch you want to fork
           title: "Auto fork branch 17.0"
           body: "Automatically forked 17.0 branch from upstream repository"
-          base: main # Replace main with the branch you want to fork into
+          base: 17.0 # Replace main with the branch you want to fork into
 
          
    
