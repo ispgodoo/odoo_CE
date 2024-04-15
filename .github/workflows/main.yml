@@ -1,25 +1,22 @@
-name: Sync Fork
+name: Auto Fork Branch
 
-on : 
-    workflow_dispatch:
-    schedule:
-    - cron: "0 13 * * 1"
+on:
+  push:
+    branches:
+      - "17.0" # Replace source-branch with the branch you want to monitor for changes
 
 jobs:
-  sync:
+  fork_branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Sync and merge upstream repository with your current repository
-        uses: dabreadman/sync-upstream-repo@v1.3.0
+      - name: Fork repository
+        uses: peter-evans/create-pull-request@v3
         with:
-          # URL of gitHub public upstream repo
-          upstream_repo: https://github.com/odoo/odoo
-          # Branch to merge from upstream (defaults to downstream branch)
-          upstream_branch: 17.0
-          # Branch to merge into downstream
-          downstream_branch: 17.0 
-          # GitHub Bot token
+          branch: 17.0 # Replace 17.0 with the branch you want to fork
+          title: "Auto fork branch 17.0"
+          body: "Automatically forked 17.0 branch from upstream repository"
+          base: main # Replace main with the branch you want to fork into
+
          
    
                 
